@@ -8,7 +8,9 @@ class CopyRule(Rule):
         Rule.__init__(self, hist, ruleHist, srcID, srcField, dstID, dstField)
         self.typ = typ
         self.ptype = ptype
-        self.content = list(set(self.content))
+        if 'Comp' in self.typ:
+            content = list(set(content))
+        self.content = content
 
     def __str__(self):
         return 'ID {!s} {!s} {!s} {!s} {!s}'.format(self.hist, self.srcID, self.srcField, self.dstID, self.dstField)
@@ -29,7 +31,8 @@ class CopyRule(Rule):
             return 'RULE transition:{0} srcID:{1} srcField:{2} dstField:{3} type:CopyPartialRule\nptype:{4} sep:{5}\n' \
                 .format(self.ruleHist.toFile(), self.srcID, self.srcField, self.dstField, ptype, self.content)
         elif 'Comp' in self.typ:
-            rest = '.'.join(self.content)
+            # rest = ','.join(list(set(self.content)))
+            rest = ','.join(self.content)
             if self.ptype == 'SUFFIX':
                 ptype = 'COPY_AS_SUFFIX'
             elif self.ptype == 'PREFIX':
