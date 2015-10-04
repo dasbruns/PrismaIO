@@ -15,3 +15,5 @@ class Rule(object):
     def __repr__(self):
         return '{!r} {!r} {!r} {!r} {!r}'.format(self.hist, self.srcID, self.srcField, self.dstID, self.dstField)
 
+    def toFile(self):
+        return ''
