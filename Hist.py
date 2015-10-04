@@ -26,8 +26,8 @@ class Hist(object):
     def __str__(self):
         s = ''
         for i in self.theHist:
-            s += str(i) + ' ; '
-        return s[:-3]
+            s += str(i) + ';'
+        return s[:-1]
         #return str(self.prePreTempID) + ';' + str(self.preTempID) + ';' + str(self.curTempID)
 
     #remove later
@@ -56,6 +56,12 @@ class Hist(object):
             allHist = crossProd(remain[0], allHist)
             remain = remain[1:]
         return allHist
+
+    def toFile(self):
+        s = ''
+        for i in self.theHist:
+            s += str(i[0]) + ';'
+        return s[:-1]
 
 
 def crossProd(longList, allHist):
