@@ -20,6 +20,9 @@ class Hist(object):
     def update(self, ID):
         return Hist(self, updateID=ID)
 
+    def length(self):
+        return len(self.theHist)
+
     def getID(self, depth=-1):
         return self.theHist[depth]
 
