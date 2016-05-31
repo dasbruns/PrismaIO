@@ -31,6 +31,8 @@ class MarkovModel(object):
     def modelEnhancer(self, depth=0):
         import copy
         goOn = False
+        # if depth == 0:
+        #     print(len(self.model))
         # for k,v in self.model.items():
         #     print(k, '--> ', v)
         # print()
@@ -51,4 +53,6 @@ class MarkovModel(object):
                         self.model[otherKey].remove(key)
         if goOn:
             self.modelEnhancer(depth+1)
+        # if depth == 0:
+        #     print(len(self.model))
 
